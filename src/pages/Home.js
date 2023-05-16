@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import DisplayCategory from '../components/DisplayCategory';
+import Navbar from '../components/Navbar';
 
 function Home() {
   const [category, setCategory] = useState([
@@ -15,7 +16,14 @@ function Home() {
     },
   ]);
 
-  return <DisplayCategory category={category} setCategory={setCategory} />;
+  return (
+    <>
+      <div className="container">
+        <Navbar />
+        <DisplayCategory category={category} setCategory={setCategory} />
+      </div>
+    </>
+  );
 }
 
 export default Home;

@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom';
-import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Category from './pages/Category';
 import Checkout from './pages/Checkout';
@@ -91,28 +90,26 @@ function App() {
 
   return (
     <>
-      <Navbar />
-      <div className="container">
-        <Routes>
-          <Route
-            path="/"
-            element={<Home category={category} setCategory={setCategory} />}
-          />
-          <Route
-            path="/category/:categoryID"
-            element={
-              <Category
-                category={category}
-                setCategory={setCategory}
-                items={items}
-                setItems={setItems}
-              />
-            }
-          />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="*" element={<NoMatch />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route
+          path="/"
+          element={<Home category={category} setCategory={setCategory} />}
+        />
+        <Route
+          path="/category/:categoryID"
+          element={
+            <Category
+              category={category}
+              setCategory={setCategory}
+              items={items}
+              setItems={setItems}
+            />
+          }
+        />
+
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="*" element={<NoMatch />} />
+      </Routes>
     </>
   );
 }

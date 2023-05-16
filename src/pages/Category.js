@@ -1,7 +1,11 @@
 import { useState } from 'react';
 import DisplayItems from '../components/DisplayItems';
+import Navbar from '../components/Navbar';
+import Filter from '../components/Filter';
+import { Link, useParams } from 'react-router-dom';
 
 function Category() {
+  const { categoryID } = useParams();
   const [category, setCategory] = useState([
     {
       id: 'fgsa2142fa',
@@ -26,6 +30,7 @@ function Category() {
         'https://mechanicalkeyboards.com/shop/images/products/large_DKME1961ST-USPDZZT1_10.jpg',
       inStock: true,
       categoryId: 'fgsa2142fa',
+      quantity: 1,
     },
     {
       id: '2a',
@@ -37,6 +42,7 @@ function Category() {
         'https://mechanicalkeyboards.com/shop/images/products/large_2790_SakuraTKL_1.jpg',
       inStock: true,
       categoryId: 'fgsa2142fa',
+      quantity: 1,
     },
     {
       id: '3a',
@@ -48,6 +54,7 @@ function Category() {
         'https://mechanicalkeyboards.com/shop/images/products/large_2017_Disco_White_Caps_1.png',
       inStock: false,
       categoryId: 'fgsa2142fa',
+      quantity: 1,
     },
     {
       id: '4b',
@@ -59,6 +66,7 @@ function Category() {
         'https://images-na.ssl-images-amazon.com/images/I/71BKQhFzDmL._AC_SY355_.jpg',
       inStock: false,
       categoryId: 'xasgy42fa',
+      quantity: 1,
     },
     {
       id: '5b',
@@ -70,6 +78,7 @@ function Category() {
         'https://images-na.ssl-images-amazon.com/images/I/719KtJ-RAFL._AC_SL1417_.jpg',
       inStock: true,
       categoryId: 'xasgy42fa',
+      quantity: 1,
     },
     {
       id: '6b',
@@ -81,16 +90,45 @@ function Category() {
         'https://images-na.ssl-images-amazon.com/images/I/61kIoNSe3VL._SL1500_.jpg',
       inStock: true,
       categoryId: 'xasgy42fa',
+      quantity: 1,
     },
   ]);
 
+  const [filter, setFilter] = useState(true);
+
+  const handleFilter = () => {
+    setFilter(e => !e);
+    return filter;
+  };
+
   return (
-    <DisplayItems
-      items={items}
-      setItems={setItems}
-      category={category}
-      setCategory={setCategory}
-    />
+    <>
+      <div className="container">
+        {categoryID === 'undefined' ? (
+          <>
+            <Navbar />
+            <h2>
+              Please Select a Category at <Link to="/">Home</Link> Page
+            </h2>
+          </>
+        ) : (
+          <>
+            <Navbar items={items} setItems={setItems} />
+
+            <Filter handleFilter={handleFilter} />
+            <DisplayItems
+              handleFilter={handleFilter}
+              filter={filter}
+              setFilter={setFilter}
+              items={items}
+              setItems={setItems}
+              category={category}
+              setCategory={setCategory}
+            />
+          </>
+        )}
+      </div>
+    </>
   );
 }
 

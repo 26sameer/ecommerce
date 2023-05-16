@@ -1,15 +1,15 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const DisplayCategory = props => {
   return (
-    <div>
+    <div className="inline">
       {props.category.map(data => {
         return (
-          <div key={data.id}>
-            <Link to={`category/${data.id}`}>
+          <div className="wrapper" key={data.id}>
+            <NavLink to={`category/${data.id}`}>
               <p>{data.name}</p>
               <p>{data.description}</p>
-            </Link>
+            </NavLink>
           </div>
         );
       })}

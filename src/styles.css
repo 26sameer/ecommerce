@@ -24,11 +24,32 @@
   text-decoration: none;
 }
 
-.nav a.active {
-  color: greenyellow;
-}
-
 .nav a:hover {
   color: rgb(108, 181, 0);
   transition: ease-in-out;
+}
+
+.img {
+  height: 100px;
+}
+
+.cart-heading {
+  display: flex;
+  flex-direction: row;
+  font-size: 2rem;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 0 200px;
+  gap: 2rem;
+}
+
+.cart-item {
+  display: flex;
+  flex-direction: row;
+  font-size: 1.5rem;
+  align-items: center;
+  justify-content: space-around;
+  padding: 10px;
+  margin: 0 200px;
+  gap: 2rem;
 }
