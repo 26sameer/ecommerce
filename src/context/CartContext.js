@@ -14,9 +14,9 @@ const CartProvider = ({ children }) => {
 
   const initialState = {
     cart: getLocalCartData(),
-    total_item: '',
-    total_price: '',
-    shippingFee: 5000,
+    total_item: 0,
+    total_price: 0,
+    shippingFee: 5,
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -63,7 +63,10 @@ const CartProvider = ({ children }) => {
 
   // Adding data to Local Storage
   useEffect(() => {
-    dispatch({ type: 'TOTAL_CART_ITEMS' });
+    // Simplifying some lines of code cause both have a lot of similarities
+    // dispatch({ type: 'TOTAL_CART_ITEMS' });
+    // dispatch({ type: 'TOTAL_CART_PRICE' });
+    dispatch({ type: 'TOTAL_CART_ITEM_PRICE' });
     localStorage.setItem('cart', JSON.stringify(state.cart));
   }, [state.cart]);
 

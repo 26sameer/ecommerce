@@ -4,8 +4,15 @@ import { useCartContext } from '../context/CartContext';
 import ToggleQuantity from '../components/ToggleQuantity';
 
 function Checkout() {
-  const { cart, removeItem, clearCart, setDecrease, setIncrease } =
-    useCartContext();
+  const {
+    cart,
+    removeItem,
+    clearCart,
+    setDecrease,
+    setIncrease,
+    total_price,
+    shippingFee,
+  } = useCartContext();
 
   console.log(cart);
 
@@ -53,6 +60,11 @@ function Checkout() {
         </NavLink>
 
         <button onClick={clearCart}>Clear Cart</button>
+        <div className="cart-total">
+          <p>Sub Total: {total_price} USD</p>
+          <p>Shipping Fee: {shippingFee} USD</p>
+          <p>Total Price: {total_price + shippingFee} USD</p>
+        </div>
       </div>
     </>
   );

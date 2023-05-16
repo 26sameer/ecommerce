@@ -99,18 +99,55 @@ const CartReducer = (state, action) => {
     };
   }
 
-  if (action.type === 'TOTAL_CART_ITEMS') {
-    let updatedItemVal = state.cart.reduce((initialValue, currElem) => {
-      const { quantity } = currElem;
-      initialValue = initialValue + quantity;
-      return initialValue;
-    }, 0);
+  // // TOTAL CART ITEMS
 
-    console.log(updatedItemVal);
+  // if (action.type === 'TOTAL_CART_ITEMS') {
+  //   let updatedItemVal = state.cart.reduce((initialValue, currElem) => {
+  //     const { quantity } = currElem;
+  //     initialValue = initialValue + quantity;
+  //     return initialValue;
+  //   }, 0);
+
+  //   return {
+  //     ...state,
+  //     total_item: updatedItemVal,
+  //   };
+  // }
+
+  // // TOTAL CART PRICE
+
+  // if (action.type === 'TOTAL_CART_PRICE') {
+  //   let updatedCartPrice = state.cart.reduce((initialValue, currElem) => {
+  //     const { price, quantity } = currElem;
+  //     initialValue = initialValue + price * quantity;
+  //     return initialValue;
+  //   }, 0);
+
+  //   return {
+  //     ...state,
+  //     total_price: updatedCartPrice,
+  //   };
+  // }
+  // Simplifying aboce lines of code cause both have a lot of similarities
+
+  if (action.type === 'TOTAL_CART_ITEM_PRICE') {
+    const { total_item, total_price } = state.cart.reduce(
+      (accum, currElem) => {
+        const { price, quantity } = currElem;
+        accum.total_item += quantity;
+        accum.total_price += price * quantity;
+        return accum;
+      },
+      {
+        total_item: 0,
+        total_price: 0,
+      }
+    );
 
     return {
       ...state,
-      total_item: updatedItemVal,
+      total_item,
+      total_price,
     };
   }
   // LAST RETURN OF STATE
