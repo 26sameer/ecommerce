@@ -9,6 +9,7 @@ const CheckOutBtn = ({ data }) => {
     <>
       <NavLink to="/checkout">
         <button
+          className="btn btn-primary"
           onClick={() =>
             addToCart(
               id,

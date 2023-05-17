@@ -3,13 +3,21 @@ const ToggleQuantity = ({ currElem, setIncrease, setDecrease }) => {
 
   return (
     <>
-      <button disabled={disableDecrement} onClick={setDecrease}>
-        -
-      </button>
-      <p>{currElem.quantity}</p>
-      <button onClick={setIncrease}>+</button>
-      <p>
-        {currElem.quantity * currElem.price} {currElem.currency}
+      <div className="item-qty">
+        <button
+          className="btn btn-secondary"
+          disabled={disableDecrement}
+          onClick={setDecrease}
+        >
+          -
+        </button>
+        <p>{currElem.quantity}</p>
+        <button className="btn btn-secondary" onClick={setIncrease}>
+          +
+        </button>
+      </div>
+      <p className="item-price">
+        ${currElem.quantity * currElem.price} {currElem.currency}
       </p>
     </>
   );

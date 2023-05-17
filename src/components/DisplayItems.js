@@ -5,14 +5,16 @@ const DisplayItems = props => {
   const { categoryID } = useParams();
 
   return (
-    <div className="inline">
+    <div className="all-items">
       {props.items.map(data => {
         if (data.categoryId === categoryID && data.inStock) {
           return (
             <div key={data.id} className="wrapper">
               <img className="img" src={data.thumbnail} alt={data.name} />
-              <p>{data.name}</p>
-              <p>{data.price}</p>
+              <p className="item-name">{data.name}</p>
+              <p className="item-price">
+                ${data.price} {data.currency}
+              </p>
               <CheckOutBtn data={data} />
             </div>
           );
@@ -23,9 +25,12 @@ const DisplayItems = props => {
               return (
                 <div key={data.id} className="wrapper">
                   <img className="img" src={data.thumbnail} alt={data.name} />
-                  <p>{data.name}</p>
-                  <p>{data.price}</p>
-                  <CheckOutBtn data={data} />
+                  <p className="item-name">{data.name}</p>
+                  <p className="item-price">
+                    ${data.price} {data.currency}
+                  </p>
+                  <button className="btn">Out Of Stock</button>
+                  {/* <CheckOutBtn data={data} /> */}
                 </div>
               );
             }

@@ -8,7 +8,11 @@ const Filter = props => {
   return (
     <>
       <div>Filter {productName}</div>
-      <input type="checkbox" onClick={props.handleFilter}></input>
+      <input
+        type="checkbox"
+        className="checkbox"
+        onClick={props.handleFilter}
+      ></input>
       <label>Include Out of Stock</label>
     </>
   );

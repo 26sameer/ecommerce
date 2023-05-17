@@ -103,18 +103,19 @@ function Category() {
 
   return (
     <>
-      <div className="container">
-        {categoryID === 'undefined' ? (
-          <>
-            <Navbar />
+      {categoryID === 'undefined' ? (
+        <>
+          <Navbar />
+          <div className="container">
             <h2>
               Please Select a Category at <Link to="/">Home</Link> Page
             </h2>
-          </>
-        ) : (
-          <>
-            <Navbar items={items} setItems={setItems} />
-
+          </div>
+        </>
+      ) : (
+        <>
+          <Navbar items={items} setItems={setItems} />
+          <div className="container">
             <Filter handleFilter={handleFilter} />
             <DisplayItems
               handleFilter={handleFilter}
@@ -125,9 +126,9 @@ function Category() {
               category={category}
               setCategory={setCategory}
             />
-          </>
-        )}
-      </div>
+          </div>
+        </>
+      )}
     </>
   );
 }

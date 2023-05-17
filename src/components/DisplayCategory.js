@@ -2,15 +2,15 @@ import { NavLink } from 'react-router-dom';
 
 const DisplayCategory = props => {
   return (
-    <div className="inline">
+    <div className="categories">
       {props.category.map(data => {
         return (
-          <div className="wrapper" key={data.id}>
-            <NavLink to={`category/${data.id}`}>
-              <p>{data.name}</p>
-              <p>{data.description}</p>
-            </NavLink>
-          </div>
+          <NavLink key={data.id} className="items" to={`category/${data.id}`}>
+            <div className=" category-item">
+              <p className="item-name">{data.name}</p>
+              <p className="item-description">{data.description}</p>
+            </div>
+          </NavLink>
         );
       })}
     </div>

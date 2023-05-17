@@ -1,26 +1,12 @@
-import { useState } from 'react';
-import DisplayCategory from '../components/DisplayCategory';
 import Navbar from '../components/Navbar';
+import StaticCode from '../components/StaticCode';
 
 function Home() {
-  const [category, setCategory] = useState([
-    {
-      id: 'fgsa2142fa',
-      name: 'Keyboards',
-      description: 'Buy different keyboard from any brand available',
-    },
-    {
-      id: 'xasgy42fa',
-      name: 'Headphones',
-      description: 'Find best-fit for your ears',
-    },
-  ]);
-
   return (
     <>
+      <Navbar />
       <div className="container">
-        <Navbar />
-        <DisplayCategory category={category} setCategory={setCategory} />
+        <StaticCode />
       </div>
     </>
   );
