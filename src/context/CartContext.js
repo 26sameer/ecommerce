@@ -16,7 +16,7 @@ const CartProvider = ({ children }) => {
     cart: getLocalCartData(),
     total_item: 0,
     total_price: 0,
-    shippingFee: 5,
+    shippingFee: 30,
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);
